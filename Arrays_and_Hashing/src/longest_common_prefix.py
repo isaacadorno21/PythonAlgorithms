@@ -29,8 +29,12 @@ class Solution:
 '''Notes on the solution: 
 - We have to go one character at a time, checking if that individual character at that 
 index is the same for all the strings we have. Checks should be made to make sure we're not getting an index out of 
+<<<<<<< HEAD
 bounds error in case we run into a shorter word than the one we are using to compare. 
 
 Other solutions: 
 -
+=======
+bounds error in case we run into a shorter word than the one we are using to compare.
+>>>>>>> 3d72093 (adding longest common prefix)
 '''
