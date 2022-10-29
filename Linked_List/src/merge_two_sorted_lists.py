@@ -30,7 +30,7 @@ class ListNode:
 
 class Solution:
     @staticmethod
-    def merge_two_lists(list1: [ListNode], list2: [ListNode]) -> [ListNode]:
+    def merge_two_lists_iterative(list1: [ListNode], list2: [ListNode]) -> [ListNode]:
         output_list = ListNode()
         temp = output_list
         while list1 and list2:
@@ -46,6 +46,17 @@ class Solution:
         if list2:
             temp.next = list2
         return output_list.next
+
+    @staticmethod
+    def merge_two_lists_recursive(self, list1: [ListNode], list2: [ListNode]) -> [ListNode]:
+        if not list1 or not list2:
+            return list1 or list2
+        if list1.val <= list2.val:
+            list1.next = self.merge_two_lists_recursive(list1.next, list2)
+            return list1
+        else:
+            list2.next = self.merge_two_lists_recursive(list1, list2.next)
+            return list2
 
 
 '''
