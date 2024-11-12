@@ -1,32 +1,52 @@
-"""Problem Description: - Given two strings s and t, return true if t is an anagram of s, and false otherwise. An
-Anagram is a word or phrase formed by rearranging the letters of a different word or phrase, typically using all the
-original letters exactly once.
+"""
+Given two strings s and t, return true if the two strings are anagrams of each other, otherwise return false.
+
+An anagram is a string that contains the exact same characters as another string, but the order of the characters can be different.
 
 Example 1:
 
-Input: s = "anagram", t = "nagaram"
+Input: s = "racecar", t = "carrace"
 Output: true
 
 Example 2:
 
-Input: s = "rat", t = "car"
+Input: s = "jar", t = "jam"
 Output: false
+
+Constraints:
+s and t consist of lowercase English letters.
 """
 
-from collections import Counter
+import unittest
 
 
 class Solution:
-    @staticmethod
-    def is_anagram(s: str, t: str) -> bool:
-        return Counter(s) == Counter(t)
+    def isAnagram(self, s: str, t: str) -> bool:
+        if len(s) != len(t):
+            return False
+        count_s, count_t = {}, {}
+        for i in range(len(s)):
+            count_s[s[i]] = 1 + count_s.get(s[i], 0)
+            count_t[t[i]] = 1 + count_t.get(t[i], 0)
+        return count_s == count_t
 
 
-'''
-Notes on the solution:
-- I used Counters here to compare the values and occurrences of each string
+class TestSolution(unittest.TestCase):
+    def test_1(self):
+        s = "anagram"
+        t = "nagaram"
+        expected = True
+        actual = Solution().isAnagram(s, t)
+        self.assertEqual(expected, actual)
 
-Other solutions: 
-- Sort each string and see if they're equivalent
-- Create a dictionary manually and fill it in to compare values
-'''
+    def test_2(self):
+        s = "rat"
+        t = "car"
+        expected = False
+        actual = Solution().isAnagram(s, t)
+        self.assertEqual(expected, actual)
+
+
+# Run the tests
+if __name__ == "__main__":
+    unittest.main()
