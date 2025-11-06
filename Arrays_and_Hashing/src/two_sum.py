@@ -23,4 +23,9 @@ Output: [0,1]
 
 class Solution:
     def two_sum(self, nums: list[int], target: int) -> list[int]:
-        return
+        indicies = {}
+        for i, num in enumerate(nums):
+            diff = target - num
+            if diff in indicies:
+                return [i, indicies[diff]]
+            indicies[num] = i
