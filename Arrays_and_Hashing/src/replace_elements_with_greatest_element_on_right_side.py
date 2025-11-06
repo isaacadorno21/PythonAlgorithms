@@ -21,27 +21,5 @@ Explanation: There are no elements to the right of index 0.
 
 
 class Solution:
-    @staticmethod
-    def replace_elements(arr: list[int]) -> list[int]:
-        # Brute force
-        # for i in range(len(arr)-1):
-        #    arr[i] = max(arr[i+1:])
-        # arr[-1] = -1
-        # return arr
-
-        right_max = float('-inf')
-        for i in range(len(arr)-2, -1, -1):
-            temp = arr[i]
-            arr[i] = max(right_max, arr[i+1])
-            right_max = max(right_max, temp)
-        arr[-1] = -1
-        return arr
-
-
-'''
-Notes on the solution: 
-- My initial, brute force solution has us going through and checking the max for each 
-subarray after the current element. This results in O(n**2) runtime.
-- I optimized this by going through the array backwards, to be able to calculate the max in realtime.
-This leads us to an O(n) solution.
-'''
+    def replace_elements(self, arr: list[int]) -> list[int]:
+        return

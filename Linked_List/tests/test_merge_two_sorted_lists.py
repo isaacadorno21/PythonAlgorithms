@@ -6,7 +6,8 @@ class TestSolution(unittest.TestCase):
     def test_1(self):
         list1 = ListNode(1, ListNode(2, ListNode(4)))
         list2 = ListNode(1, ListNode(3, ListNode(4)))
-        expected = ListNode(1, ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(4))))))
+        expected = ListNode(1, ListNode(1, ListNode(
+            2, ListNode(3, ListNode(4, ListNode(4))))))
         actual = Solution().merge_two_lists_iterative(list1, list2)
         self.assertEqual(expected.val, actual.val)
 
