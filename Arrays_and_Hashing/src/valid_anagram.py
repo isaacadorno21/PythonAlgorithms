@@ -17,7 +17,26 @@ Constraints:
 s and t consist of lowercase English letters.
 """
 
-
 class Solution:
     def isAnagram(self, s: str, t: str) -> bool:
-        return
+        if len(s) != len(t):
+            return False
+
+        # Maps will store { key (letter): value (num of occurences) }
+        letters_map = {}
+
+        for i in range(0, len(s)):
+            s_letter = s[i]
+            t_letter = t[i]
+
+            if s_letter not in letters_map:
+                letters_map[s_letter] = 1
+            else:
+                letters_map[s_letter] += 1
+
+            if t_letter not in letters_map:
+                letters_map[t_letter] = -1
+            else:
+                letters_map[t_letter] += -1
+
+        return all(value == 0 for value in letters_map.values())
