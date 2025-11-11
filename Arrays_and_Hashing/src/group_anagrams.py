@@ -24,4 +24,12 @@ Output: [["a"]]
 
 class Solution:
     def group_anagrams(self, strs: list[str]) -> list[list[str]]:
-        return
+        # mapping = { key - sorted string: value - values that fit this}
+        sorted_string_mapping = {}
+        for str in strs:
+            sorted_str = ''.join(sorted(str))
+            if sorted_str in sorted_string_mapping:
+                sorted_string_mapping[sorted_str].append(str)
+            else:
+                sorted_string_mapping[sorted_str] = [str]
+        return list(sorted_string_mapping.values())

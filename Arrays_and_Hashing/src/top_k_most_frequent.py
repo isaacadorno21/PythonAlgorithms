@@ -14,7 +14,19 @@ Output: [1]
 """
 
 
+from collections import Counter
+
+
 class Solution:
-    @staticmethod
-    def top_k_most_frequent_simple(self, nums: list[int], k: int) -> list[int]:
-        return
+    def top_k_most_frequent(self, nums: list[int], k: int) -> list[int]:
+        # Dictionary of counts, sort values in descending order
+        nums_map = Counter(nums)
+        dictionary_items = list(nums_map.items())
+        sorted_dictionary_items = sorted(dictionary_items, key=lambda x: x[1], reverse=True)
+        
+        i = 0
+        output_values = []
+        while i < k:
+            output_values.append(sorted_dictionary_items[i][0])
+            i += 1
+        return output_values
